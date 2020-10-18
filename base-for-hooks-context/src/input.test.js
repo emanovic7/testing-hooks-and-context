@@ -5,13 +5,13 @@ import { shallow, Shallow } from 'enzyme';
 import Input from './input';
 
 //utils
-import { findByTestAttr } from '../test/testUtils';
+import { checkProps, findByTestAttr } from '../test/testUtils';
 
 /** 
  * @returns {ShallowWrapper}
 */
-const setup = () => {
-  return shallow(<Input />);
+const setup = (secretWord='party') => {
+  return shallow(<Input secretWord={secretWord} />);
 }
 
 test('renders without crashing', () => {
@@ -19,3 +19,7 @@ test('renders without crashing', () => {
   const component = findByTestAttr(wrapper, 'input-component');
   expect(component.length).toBe(1);
 });
+
+test('does not throw warning with expected props', () => {
+  checkProps(Input, { secretWord: 'Party' });
+})

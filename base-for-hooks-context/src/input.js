@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Input(props) {
+function Input({ secretWord }) {
   return (
     <div>
       <input data-test="input-component">
@@ -8,6 +9,10 @@ function Input(props) {
       </input>
     </div>
   );
+}
+
+Input.propTypes = {
+  secretWord: PropTypes.string.isRequired,
 }
 
 export default Input;
